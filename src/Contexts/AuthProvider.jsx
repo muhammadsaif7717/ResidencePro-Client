@@ -49,6 +49,20 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
+             //if currentUser post to database
+      setTimeout(() => {
+        if (currentUser) {
+          const user = {
+            name: currentUser.displayName,
+            email: currentUser.email,
+            photo: currentUser.photoURL,
+            role: 'member',
+          }
+          axiosPublic.post(`/users`, user)
+        }
+      }, [4000])
+
+
             console.log('Current User', currentUser);
             if (currentUser) {
                 // get token and store client

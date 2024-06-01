@@ -7,7 +7,7 @@ const Home = () => {
                 <title>Template | Home</title>
             </Helmet>
 
-            <div className="my-10">
+            <div className="min-h-screen pt-16">
                 <h1 className="text-center text-2xl font-bold">This Is Home</h1>
             </div>
         </>

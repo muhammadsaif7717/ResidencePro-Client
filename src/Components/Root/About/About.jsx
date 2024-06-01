@@ -6,7 +6,7 @@ const About = () => {
 
 
     return (
-        <div className="flex justify-center items-center h-auto md:h-[80vh] mb-10">
+        <div className="flex justify-center items-center min-h-screen ">
             <Helmet>
                 <title>Template | About</title>
             </Helmet>

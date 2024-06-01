@@ -17,17 +17,20 @@ const NavBar = () => {
 
   const links = (
     <>
-      <NavLink className="px-5" to="/">
+      <NavLink className="px-5 text-lg" to="/">
         Home
       </NavLink>
-      <NavLink className="px-5" to="/">
+      <NavLink className="px-5 text-lg" to="/apartment">
         Apartment
+      </NavLink>
+      <NavLink className="px-5 text-lg" to="/about">
+        About
       </NavLink>
     </>
   );
   return (
     <>
-      <div className="navbar bg-base-100 p-0">
+      <div className="navbar bg-base-100 p-0 bg-opacity-30 fixed">
         <div className="navbar-start">
           <div className="dropdown">
             <div
@@ -57,7 +60,7 @@ const NavBar = () => {
               {links}
             </nav>
           </div>
-          <Link to={`/`} className="btn btn-ghost text-xl font-bold p-0 ">ResidencePro</Link>
+          <Link to={`/`} className="btn btn-ghost text-2xl font-bold p-0 ">ResidencePro</Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <nav className="menu menu-horizontal px-1">{links}</nav>
@@ -67,12 +70,12 @@ const NavBar = () => {
           {
             user ?
               <div className="dropdown dropdown-end">
-                <div tabIndex={0} role="button" className="btn">
+                <div tabIndex={0} role="button" className="btn rounded-full p-1 ">
                   <img src={user?.photoURL} className="w-10 rounded-full" />
                 </div>
-                <ul tabIndex={0} className="dropdown-content z-50 menu p-2 shadow bg-base-100 rounded-box w-52 gap-2">
-                  <li className="font-semibold pl-4">{user.displayName}</li>
-                  <li><Link to={`/dashboard`}>Dashboard</Link></li>
+                <ul tabIndex={0} className="dropdown-content border mt-1 z-50 menu p-2 shadow bg-base-100 rounded-box w-52 gap-2">
+                  <li className="font-semibold text-xl pl-1">{user.displayName}</li>
+                  <li><Link to={`/dashboard`} className="btn btn-primary border-none bg-orange-500 text-white">Dashboard</Link></li>
                   <li>
                     {
                       user ?
