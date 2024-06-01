@@ -26,11 +26,11 @@ const AuthProvider = ({ children }) => {
     }
 
     //update profile
-    const updateUserProfile = (name, photo) => {
+    const updateUserProfile = (name, profileImage) => {
         setLoading(true)
         return updateProfile(auth.currentUser, {
             displayName: name,
-            photoURL: photo
+            photoURL: profileImage,
         })
     }
 
@@ -49,7 +49,7 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
-            // console.log('Current User', currentUser);
+            console.log('Current User', currentUser);
             if (currentUser) {
                 // get token and store client
                 const userInfo = { email: currentUser.email }

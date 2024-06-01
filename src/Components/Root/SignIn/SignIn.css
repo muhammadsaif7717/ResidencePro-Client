@@ -1,5 +1,5 @@
-.sign-up-container{
-    background-image: url(../../assets/images/authentication.png);
+.signIn-container{
+    background-image: url(../../../assets/images/authentication.png);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
