@@ -1,4 +1,8 @@
 import { Helmet } from "react-helmet-async";
+import Banner from "../Banner/Banner";
+import AboutBuilding from "../AboutBuilding/AboutBuilding";
+import CouponSection from "../CouponSection/CouponSection";
+import Location from "../Location/Location";
 
 const Home = () => {
     return (
@@ -7,8 +11,11 @@ const Home = () => {
                 <title>Template | Home</title>
             </Helmet>
 
-            <div className="min-h-screen pt-16">
-                <h1 className="text-center text-2xl font-bold">This Is Home</h1>
+            <div className="min-h-screen">
+                <Banner></Banner>
+                <AboutBuilding></AboutBuilding>
+                <CouponSection></CouponSection>
+                <Location></Location>
             </div>
         </>
     );

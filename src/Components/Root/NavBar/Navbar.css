@@ -1,3 +1,5 @@
 nav a.active{
-    color: tomato;
+    color: rgb(0, 255, 55);
+    border: 2px solid rgb(0, 255, 55);
+    border-radius: 10px;
 }

@@ -3,6 +3,9 @@ import "./Navbar.css";
 import useAuth from "../../../Hooks/useAuth";
 import { IoIosLogIn } from "react-icons/io";
 import DarkMode from "../../Shared/DarkMode/DarkMode";
+import logo from '../../../assets/images/icons8-jira-256.png'
+
+
 
 const NavBar = () => {
   const { user, logOutUser } = useAuth();
@@ -16,7 +19,7 @@ const NavBar = () => {
 
 
   const links = (
-    <>
+    <div className="text-white">
       <NavLink className="px-5 text-lg" to="/">
         Home
       </NavLink>
@@ -26,11 +29,11 @@ const NavBar = () => {
       <NavLink className="px-5 text-lg" to="/about">
         About
       </NavLink>
-    </>
+    </div>
   );
   return (
     <>
-      <div className="navbar bg-base-100 p-0 bg-opacity-30 fixed">
+      <div className="navbar bg-gray-500 bg-opacity-50 fixed max-w-screen-xl mx-auto p-1 z-50">
         <div className="navbar-start">
           <div className="dropdown">
             <div
@@ -60,7 +63,10 @@ const NavBar = () => {
               {links}
             </nav>
           </div>
-          <Link to={`/`} className="btn btn-ghost text-2xl font-bold p-0 ">ResidencePro</Link>
+          <Link to={`/`} className="btn btn-ghost text-2xl font-bold p-0 ">
+            <img src={logo} className="w-10" />
+            ResidencePro
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <nav className="menu menu-horizontal px-1">{links}</nav>
