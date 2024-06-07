@@ -8,6 +8,7 @@ import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import useAuth from "../../../Hooks/useAuth";
 import { FaEyeSlash, FaRegEye } from "react-icons/fa";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
@@ -37,7 +38,7 @@ const SignUp = () => {
         const imageFile = { image: data.image[0] };
         // console.log(imageFile)
 
-        const res = await axiosPublic.post(image_hosting_api, imageFile, {
+        const res = await axios.post(image_hosting_api, imageFile, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
@@ -53,6 +54,7 @@ const SignUp = () => {
             .then(res => {
                 // console.log('New User', res.user)
                 if (res.user) {
+
                     Swal.fire({
                         position: "center",
                         icon: "success",
@@ -60,6 +62,16 @@ const SignUp = () => {
                         showConfirmButton: false,
                         timer: 1500
                     });
+
+                    // if not existing user post to database
+                    const newUser = {
+                        name: name,
+                        email: email,
+                        profileImage: profileImage,
+                        role: 'member',
+                    }
+                    axiosPublic.post('/users', newUser)
+
                     // then reset form
                     reset();
                     setTimeout(() => {

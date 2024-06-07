@@ -48,40 +48,40 @@ const AuthProvider = ({ children }) => {
     //observe user 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
+            const userEmail = currentUser?.email || user?.email;
+            const loggedUser = { email: userEmail };
+
             setUser(currentUser);
-             //if currentUser post to database
-      setTimeout(() => {
-        if (currentUser) {
-          const user = {
-            name: currentUser.displayName,
-            email: currentUser.email,
-            photo: currentUser.photoURL,
-            role: 'member',
-          }
-          axiosPublic.post(`/users`, user)
-        }
-      }, [4000])
-
-
             console.log('Current User', currentUser);
+            setLoading(false);
+
+            // If user exists then issue a token
             if (currentUser) {
-                // get token and store client
-                const userInfo = { email: currentUser.email }
-                axiosPublic.post('/jwt', userInfo)
+                axiosPublic.post('/jwt', loggedUser)
                     .then(res => {
-                        if (res.data.token) {
-                            localStorage.setItem('access-token', res.data.token)
-                        }
+                        console.log('Token Response', res.data);
                     })
+                    .catch(err => {
+                        console.error('Error setting token', err);
+                    });
             }
             else {
-                localStorage.removeItem('access-token')
+                axiosPublic.post('/clear-jwt', loggedUser)
+                    .then(() => {
+                        // console.log('Sign Out Response', res.data);
+                    })
+                    .catch(err => {
+                        console.error('Error', err);
+                    });
             }
-            setLoading(false)
-        })
-        return () => unsubscribe();
-    }, [axiosPublic ])
+        });
 
+        return () => unsubscribe();
+    }, [axiosPublic, user?.email]);
+
+
+
+    //
     const authInfo = {
         user,
         loading,

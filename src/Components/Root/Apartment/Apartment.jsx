@@ -1,16 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import { useState } from 'react';
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 const Apartment = () => {
-    const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure();
     const [currentPage, setCurrentPage] = useState(0);
     const itemsPerPage = 6;
 
     const { data: rooms = [] } = useQuery({
         queryKey: ['rooms'],
         queryFn: async () => {
-            const res = await axiosPublic.get('/rooms');
+            const res = await axiosSecure.get('/rooms');
             return res.data;
         }
     });

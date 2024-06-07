@@ -2,6 +2,7 @@ import { FaGoogle } from "react-icons/fa";
 import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../../../Hooks/useAuth";
+import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 
 
 
@@ -9,6 +10,7 @@ const SocialLogin = () => {
     const { googleLogin } = useAuth();
     const location = useLocation();
     const navigate = useNavigate();
+    const axiosPublic = useAxiosPublic();
 
     const handleGoogleLogin = () => {
         googleLogin()
@@ -21,6 +23,15 @@ const SocialLogin = () => {
                         showConfirmButton: false,
                         timer: 1500
                     });
+
+                    // if not existing user post to database
+                    const newUser = {
+                        name: res.user.displayName,
+                        email: res.user.email,
+                        profileImage: res.user.photoURL,
+                        role: 'member',
+                    }
+                    axiosPublic.post('/users', newUser)
 
                     // navigate
                     setTimeout(() => {

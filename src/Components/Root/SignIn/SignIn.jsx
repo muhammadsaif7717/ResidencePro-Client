@@ -16,8 +16,8 @@ const SignIn = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const captchaInputRef = useRef(null);
     const [showPassword, setShowPassword] = useState(false);
-    const location=useLocation();
-    const navigate=useNavigate();
+    const location = useLocation();
+    const navigate = useNavigate();
 
     useEffect(() => {
         loadCaptchaEnginge(6);
@@ -42,6 +42,7 @@ const SignIn = () => {
         loginUser(email, password)
             .then((res) => {
                 if (res.user) {
+
                     Swal.fire({
                         position: "center",
                         icon: "success",
@@ -49,6 +50,8 @@ const SignIn = () => {
                         showConfirmButton: false,
                         timer: 1500
                     });
+
+
                     // then reset form
                     reset();
                     setTimeout(() => {
@@ -57,7 +60,7 @@ const SignIn = () => {
                 }
 
             })
-            .then(()=>{
+            .then(() => {
 
             })
             .catch(() => {
