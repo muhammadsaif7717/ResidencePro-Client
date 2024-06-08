@@ -90,7 +90,7 @@ const AgreementRequest = () => {
                             <p><strong>Block Name:</strong> {agreement.blockName}</p>
                             <p><strong>Room No:</strong> {agreement.apartmentNo}</p>
                             <p><strong>Rent:</strong> {agreement.rent}</p>
-                            <p><strong>Request Date:</strong> {agreement.date}</p>
+                            <p><strong>Request Date:</strong> {new Date(agreement.date).toLocaleDateString()}</p>
                             <div className="card-actions justify-start">
                                 <button onClick={() => handleAccept(agreement._id)} className="btn btn-success">Accept</button>
                                 <button onClick={() => handleReject(agreement._id)} className="btn btn-error">Reject</button>
