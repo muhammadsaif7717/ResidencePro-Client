@@ -68,7 +68,7 @@ const SignUp = () => {
                         name: name,
                         email: email,
                         profileImage: profileImage,
-                        role: 'member',
+                        role: 'user',
                     }
                     axiosPublic.post('/users', newUser)
 

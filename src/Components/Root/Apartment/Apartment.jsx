@@ -1,8 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState } from 'react';
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import useAuth from "../../../Hooks/useAuth";
+import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+import Swal from "sweetalert2";
 
 const Apartment = () => {
+    const { user } = useAuth();
+    const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
     const [currentPage, setCurrentPage] = useState(0);
     const itemsPerPage = 6;
@@ -27,6 +32,48 @@ const Apartment = () => {
         setCurrentPage(pageIndex);
     };
 
+    const handleButtonClick = async (room) => {    
+        const agreement = {
+            userName: user.displayName,
+            userEmail: user.email,
+            floorNo: room.floorNo,
+            blockName: room.blockName,
+            apartmentNo: room.apartmentNo,
+            rent: room.rent,
+            date: new Date(),
+            status: 'pending'
+        }
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "info",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes!"
+          }).then((result) => {
+            if (result.isConfirmed) {
+                axiosPublic.post('/agreements', agreement)
+                .then(res => {
+                    if (res.data.insertedId){
+                        Swal.fire({
+                            position: "center",
+                            icon: "success",
+                            title: "Agreement is pending",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                    }
+                     
+                })
+            }
+          });
+
+
+       
+    }
+
     return (
         <div className="pt-24 min-h-screen mb-14">
             <h2 className="text-3xl font-bold text-center mb-8">Apartments</h2>
@@ -40,7 +87,7 @@ const Apartment = () => {
                                 <p className="text-gray-700">Floor: {room.floorNo}</p>
                                 <p className="text-gray-700">Block: {room.blockName}</p>
                                 <p className="text-gray-700">Rent: ${room.rent}</p>
-                                <button className="mt-4 bg-blue-500 text-white py-2 px-4 rounded">Agreement</button>
+                                <button onClick={() => handleButtonClick(room)} className="mt-4 bg-blue-500 text-white py-2 px-4 rounded">Agreement</button>
                             </div>
                         </div>
                     ))

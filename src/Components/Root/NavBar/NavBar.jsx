@@ -4,11 +4,13 @@ import useAuth from "../../../Hooks/useAuth";
 import { IoIosLogIn } from "react-icons/io";
 import DarkMode from "../../Shared/DarkMode/DarkMode";
 import logo from '../../../assets/images/icons8-jira-256.png'
+import useAdmin from "../../../Hooks/useAdmin";
 
 
 
 const NavBar = () => {
   const { user, logOutUser } = useAuth();
+  const [isAdmin] = useAdmin();
 
   const handleSignOut = () => {
     logOutUser()
@@ -33,7 +35,7 @@ const NavBar = () => {
   );
   return (
     <>
-      <div className="navbar bg-gray-500 bg-opacity-50 fixed max-w-screen-xl mx-auto p-1 z-50">
+      <div className="navbar bg-gray-500 bg-opacity-50 fixed max-w-screen-xl mx-auto  z-50 ">
         <div className="navbar-start">
           <div className="dropdown">
             <div
@@ -81,7 +83,12 @@ const NavBar = () => {
                 </div>
                 <ul tabIndex={0} className="dropdown-content border mt-1 z-50 menu p-2 shadow bg-base-100 rounded-box w-52 gap-2">
                   <li className="font-semibold text-xl pl-1">{user.displayName}</li>
-                  <li><Link to={`/dashboard`} className="btn btn-primary border-none bg-orange-500 text-white">Dashboard</Link></li>
+                  {
+                    isAdmin ?
+                      <li><Link to={`/dashboard/admin-profile`} className="btn btn-primary border-none bg-orange-500 text-white">Dashboard</Link></li>
+                      :
+                      <li><Link to={`/dashboard/my-profile`} className="btn btn-primary border-none bg-orange-500 text-white">Dashboard</Link></li>
+                  }
                   <li>
                     {
                       user ?
