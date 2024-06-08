@@ -38,13 +38,19 @@ const MyProfile = () => {
                 <div className="card-body ">
                     <h2 className="card-title text-2xl">{currentUser?.name || user.displayName}</h2>
                     <p><strong>Email:</strong> {currentUser?.email || user.email}</p>
+                    <p><strong>Role:</strong> {currentUser?.role}</p>
                     <div>
                         {
-                            isMember && currentUser?.acceptDate ? (
+                            isMember ?
                                 <div>
-                                    <p><strong>Accept Date:</strong> {new Date(currentUser?.acceptDate).toLocaleDateString()}</p>
+                                    <p><strong>Floor No:</strong> {currentUser?.agreement.floorNo}</p>
+                                    <p><strong>Block Name:</strong> {currentUser?.agreement.blockName}</p>
+                                    <p><strong>Apartment No:</strong> {currentUser?.agreement.apartmentNo}</p>
+                                    <p><strong>Rent:</strong> {currentUser?.agreement.rent}</p>
+                                    <p><strong>Accept Date:</strong> {new Date(currentUser?.agreement.acceptDate).toLocaleDateString()}</p>
                                 </div>
-                            ) : null
+                                :
+                                null
                         }
                     </div>
                 </div>
