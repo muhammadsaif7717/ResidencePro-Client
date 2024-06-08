@@ -8,8 +8,16 @@ import useMember from "../../Hooks/useMember";
 
 const Dashboard = () => {
 
-    const [isAdmin] = useAdmin();
-    const [isMember] = useMember();
+    const [isAdmin, isAdminLoading] = useAdmin();
+    const [isMember, isMemberLoading] = useMember();
+
+    if (isMemberLoading || isAdminLoading) {
+        return (
+            <div className="min-h-screen flex items-center justify-center">
+                <span className="loading loading-bars loading-lg scale-110"></span>
+            </div>
+        );
+    }
 
     return (
         <div className="flex md:gap-5">

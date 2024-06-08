@@ -4,7 +4,14 @@ import useMember from "../../../../Hooks/useMember";
 
 const MyProfile = () => {
     const { user } = useAuth();
-    const [isMember] = useMember();
+    const [isMember, isMemberLoading] = useMember();
+    if (isMemberLoading) {
+        return (
+            <div className="min-h-screen flex items-center justify-center">
+                <span className="loading loading-bars loading-lg scale-110"></span>
+            </div>
+        );
+    }
     return (
         <div className="flex flex-col items-center justify-center">
             <h1 className="text-4xl font-semibold text-center">Welcome <span className="text-green-600">{user.displayName}!</span></h1>
@@ -18,10 +25,10 @@ const MyProfile = () => {
                     <p><strong>Email:</strong> {user.email}</p>
                     <div>
                         {
-                            isMember?
-                            <div>fsd</div>
-                            :
-                            ''
+                            isMember ?
+                                <div>fsd</div>
+                                :
+                                ''
                         }
                     </div>
                 </div>
