@@ -14,8 +14,15 @@ const AgreementRequest = () => {
             return res.data;
         }
     });
-
-    const handleAccept = async (id) => {
+    const handleAccept = async (agreement) => {
+        const userAgreement = {
+            floorNo: agreement.floorNo,
+            blockName: agreement.blockName,
+            apartmentNo: agreement.apartmentNo,
+            rent: agreement.rent,
+            acceptDate: new Date(),
+        };
+        console.log(userAgreement)
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -27,7 +34,7 @@ const AgreementRequest = () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 // accept , update status & delete
-                axiosSecure.put(`agreements/${id}/accept`)
+                axiosSecure.put(`agreements/${agreement._id}/accept`, userAgreement)
                     .then(res => {
                         console.log(res.data)
                         if (res.data.success) {
@@ -92,7 +99,7 @@ const AgreementRequest = () => {
                             <p><strong>Rent:</strong> {agreement.rent}</p>
                             <p><strong>Request Date:</strong> {new Date(agreement.date).toLocaleDateString()}</p>
                             <div className="card-actions justify-start">
-                                <button onClick={() => handleAccept(agreement._id)} className="btn btn-success">Accept</button>
+                                <button onClick={() => handleAccept(agreement)} className="btn btn-success">Accept</button>
                                 <button onClick={() => handleReject(agreement._id)} className="btn btn-error">Reject</button>
                             </div>
                         </div>
