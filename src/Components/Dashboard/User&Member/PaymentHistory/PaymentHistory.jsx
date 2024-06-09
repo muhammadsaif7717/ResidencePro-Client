@@ -4,7 +4,7 @@ import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 import useAuth from '../../../../Hooks/useAuth';
 
 const PaymentHistory = () => {
-    const {user}=useAuth();
+    const { user } = useAuth();
     const axiosPublic = useAxiosPublic();
     const [searchQuery, setSearchQuery] = useState('');
 
@@ -20,7 +20,7 @@ const PaymentHistory = () => {
         setSearchQuery(e.target.value);
     };
 
-    const filteredPayments = payments.filter(payment => 
+    const filteredPayments = payments.filter(payment =>
         payment.month.toLowerCase().includes(searchQuery.toLowerCase())
     );
 

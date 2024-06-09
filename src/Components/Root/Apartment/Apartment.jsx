@@ -8,13 +8,13 @@ import { useNavigate } from "react-router-dom";
 
 const Apartment = () => {
     const { user } = useAuth();
-    const navigate=useNavigate();
+    const navigate = useNavigate();
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
     const [currentPage, setCurrentPage] = useState(0);
     const itemsPerPage = 6;
 
-    const { data: rooms = [] ,isLoading} = useQuery({
+    const { data: rooms = [], isLoading } = useQuery({
         queryKey: ['rooms'],
         queryFn: async () => {
             const res = await axiosSecure.get('/rooms');
@@ -42,8 +42,8 @@ const Apartment = () => {
         setCurrentPage(pageIndex);
     };
 
-    const handleButtonClick = async (room) => {    
-        if(user){
+    const handleButtonClick = async (room) => {
+        if (user) {
             const agreement = {
                 userName: user.displayName,
                 userEmail: user.email,
@@ -54,7 +54,7 @@ const Apartment = () => {
                 date: new Date(),
                 status: 'pending'
             }
-    
+
             Swal.fire({
                 title: "Are you sure?",
                 text: "You won't be able to revert this!",
@@ -63,30 +63,30 @@ const Apartment = () => {
                 confirmButtonColor: "#3085d6",
                 cancelButtonColor: "#d33",
                 confirmButtonText: "Yes!"
-              }).then((result) => {
+            }).then((result) => {
                 if (result.isConfirmed) {
                     axiosPublic.post('/agreements', agreement)
-                    .then(res => {
-                        if (res.data.insertedId){
-                            Swal.fire({
-                                position: "center",
-                                icon: "success",
-                                title: "Agreement is pending",
-                                showConfirmButton: false,
-                                timer: 1500
-                            });
-                        }
-                         
-                    })
+                        .then(res => {
+                            if (res.data.insertedId) {
+                                Swal.fire({
+                                    position: "center",
+                                    icon: "success",
+                                    title: "Agreement is pending",
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                            }
+
+                        })
                 }
-              });
-    
+            });
+
         }
-        else{
+        else {
             navigate('/sign-up')
         }
 
-       
+
     }
 
     return (
@@ -102,7 +102,7 @@ const Apartment = () => {
                                 <p className="text-gray-700">Floor: {room.floorNo}</p>
                                 <p className="text-gray-700">Block: {room.blockName}</p>
                                 <p className="text-gray-700">Rent: ${room.rent}</p>
-                                <button  onClick={() => handleButtonClick(room)} className="mt-4 bg-blue-500 text-white py-2 px-4 rounded">Agreement</button>
+                                <button onClick={() => handleButtonClick(room)} className="mt-4 bg-blue-500 text-white py-2 px-4 rounded">Agreement</button>
                             </div>
                         </div>
                     ))

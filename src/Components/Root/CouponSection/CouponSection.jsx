@@ -5,22 +5,22 @@ import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 
 
 const CouponSection = () => {
-  const axiosPublic=useAxiosPublic();
-  const {data:coupons=[],isLoading}=useQuery({
-    queryKey:['coupons'],
-    queryFn: async()=>{
-      const res= await axiosPublic.get('/coupons');
+  const axiosPublic = useAxiosPublic();
+  const { data: coupons = [], isLoading } = useQuery({
+    queryKey: ['coupons'],
+    queryFn: async () => {
+      const res = await axiosPublic.get('/coupons');
       return res.data;
     }
   });
 
   if (isLoading) {
     return (
-        <div className="min-h-screen flex items-center justify-center">
-            <span className="loading loading-bars loading-lg scale-110"></span>
-        </div>
+      <div className="min-h-screen flex items-center justify-center">
+        <span className="loading loading-bars loading-lg scale-110"></span>
+      </div>
     );
-}
+  }
 
   return (
     <section className="bg-gray-100 py-16 px-4">

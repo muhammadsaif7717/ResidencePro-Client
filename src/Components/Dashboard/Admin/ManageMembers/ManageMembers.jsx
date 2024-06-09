@@ -47,7 +47,7 @@ const ManageMembers = () => {
         });
     }
     refetch();
-    
+
     return (
         <div>
             <div className="flex justify-evenly">

@@ -8,7 +8,7 @@ const Root = () => {
     const ifSignUpPage = location.pathname.includes('sign-up')
     return (
         <div>
-             {(ifLoginPage || ifSignUpPage) || <NavBar></NavBar>}
+            {(ifLoginPage || ifSignUpPage) || <NavBar></NavBar>}
             <Outlet></Outlet>
             {(ifLoginPage || ifSignUpPage) || <Footer></Footer>}
         </div>

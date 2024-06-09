@@ -1,116 +1,116 @@
 [
-    {
-      "title": "Luxury Suite",
-      "description": "Experience luxury like never before in our spacious suite. Our Luxury Suite offers breathtaking views of the city skyline and is elegantly designed with modern amenities to ensure a comfortable stay.",
-      "pricePerNight": 300,
-      "roomSize": "1000 sq ft",
-      "availability": "Yes",
-      "bookedDate": "",
-      "reviews": [],
-      "images": [
-        "https://i.postimg.cc/bNbqnDMR/2150895587-1.jpg",
-        "https://i.postimg.cc/Jz5m6wRD/1791.jpg",
-        "https://i.postimg.cc/G2HCmHGG/2000.jpg"
-      ],
-      "specialOffers": {
-        "offerPrice": 100,
-        "offerTitle": "Special Summer Offer!",
-        "offerDescription": "Book now and get a special discounted rate for your stay during summer."
-      }
-    },
-    {
-      "title": "Deluxe Room",
-      "description": "Indulge in comfort and style in our Deluxe Room. With its modern amenities and elegant design, it's the perfect choice for a relaxing stay.",
-      "pricePerNight": 200,
-      "roomSize": "700 sq ft",
-      "availability": "Yes",
-      "bookedDate": "",
-      "reviews": [],
-      "images": [
-        "https://i.postimg.cc/t493HxpJ/2150895578.jpg",
-        "https://i.postimg.cc/Rhz3Qk0h/2150895589.jpg",
-        "https://i.postimg.cc/N03LB3mD/2150895575.jpg"
-      ],
-      "specialOffers": {
-        "offerPrice": 150,
-        "offerTitle": "Limited Time Offer!",
-        "offerDescription": "Book now and get a special discounted rate for a limited time only."
-      }
-    },
-    {
-      "title": "Executive Suite",
-      "description": "Our Executive Suite offers the ultimate in luxury and comfort. With premium amenities and personalized services, it's perfect for discerning travelers.",
-      "pricePerNight": 500,
-      "roomSize": "1500 sq ft",
-      "availability": "Yes",
-      "bookedDate": "",
-      "reviews": [],
-      "images": [
-        "https://i.postimg.cc/jSCjNxhv/2301.jpg",
-        "https://i.postimg.cc/ydh6BkV6/12375.jpg",
-        "https://i.postimg.cc/t493HxpJ/2150895578.jpg"
-      ],
-      "specialOffers": {
-        "offerPrice": 400,
-        "offerTitle": "Summer Special Discount!",
-        "offerDescription": "Book now and enjoy our exclusive summer discount on Executive Suite bookings."
-      }
-    },
-    {
-      "title": "Family Suite",
-      "description": "Our Family Suite is perfect for families or groups. With spacious rooms and separate living areas, it offers plenty of space for everyone to relax and unwind.",
-      "pricePerNight": 400,
-      "roomSize": "1200 sq ft",
-      "availability": "Yes",
-      "bookedDate": "",
-      "reviews": [],
-      "images": [
-        "https://i.postimg.cc/DzKth5ms/6282.jpg",
-        "https://i.postimg.cc/nzW2FcT5/2149871181.jpg",
-        "https://i.postimg.cc/kMQrj04C/2148285503.jpg"
-      ],
-      "specialOffers": {
-        "offerPrice": 300,
-        "offerTitle": "Special Family Offer!",
-        "offerDescription": "Book now and get a special discounted rate for Family Suite bookings, perfect for your family getaway!"
-      }
-    },
-    {
-      "title": "Standard Room",
-      "description": "Our Standard Room is a comfortable choice for those seeking quality accommodation at an affordable price. Enjoy modern amenities and a cozy atmosphere during your stay.",
-      "pricePerNight": 150,
-      "roomSize": "500 sq ft",
-      "availability": "Yes",
-      "bookedDate": "",
-      "reviews": [],
-      "images": [
-        "https://i.postimg.cc/8c668kCm/3034.jpg",
-        "https://i.postimg.cc/t7GV90ZQ/17926.jpg",
-        "https://i.postimg.cc/WpCCcs8F/12078.jpg"
-      ],
-      "specialOffers": {
-        "offerPrice": 120,
-        "offerTitle": "Early Bird Special!",
-        "offerDescription": "Book now and take advantage of our Early Bird Special for the Standard Room. Limited availability!"
-      }
-    },
-    {
-      "title": "Penthouse Suite",
-      "description": "Experience the epitome of luxury in our Penthouse Suite. With breathtaking views and lavish amenities, it's perfect for special occasions or a truly indulgent getaway.",
-      "pricePerNight": 800,
-      "roomSize": "2000 sq ft",
-      "availability": "Yes",
-      "bookedDate": "",
-      "reviews": [],
-      "images": [
-        "https://i.postimg.cc/W16HZgvg/12374.jpg",
-        "https://i.postimg.cc/s2TH6z12/1800.jpg",
-        "https://i.postimg.cc/vTVPZ6h1/2259.jpg"
-      ],
-      "specialOffers": {
-        "offerPrice": 650,
-        "offerTitle": "Exclusive Penthouse Offer!",
-        "offerDescription": "Book now and enjoy our exclusive offer for the Penthouse Suite. Experience luxury at a special discounted rate!"
-      }
+  {
+    "title": "Luxury Suite",
+    "description": "Experience luxury like never before in our spacious suite. Our Luxury Suite offers breathtaking views of the city skyline and is elegantly designed with modern amenities to ensure a comfortable stay.",
+    "pricePerNight": 300,
+    "roomSize": "1000 sq ft",
+    "availability": "Yes",
+    "bookedDate": "",
+    "reviews": [],
+    "images": [
+      "https://i.postimg.cc/bNbqnDMR/2150895587-1.jpg",
+      "https://i.postimg.cc/Jz5m6wRD/1791.jpg",
+      "https://i.postimg.cc/G2HCmHGG/2000.jpg"
+    ],
+    "specialOffers": {
+      "offerPrice": 100,
+      "offerTitle": "Special Summer Offer!",
+      "offerDescription": "Book now and get a special discounted rate for your stay during summer."
     }
-  ]
+  },
+  {
+    "title": "Deluxe Room",
+    "description": "Indulge in comfort and style in our Deluxe Room. With its modern amenities and elegant design, it's the perfect choice for a relaxing stay.",
+    "pricePerNight": 200,
+    "roomSize": "700 sq ft",
+    "availability": "Yes",
+    "bookedDate": "",
+    "reviews": [],
+    "images": [
+      "https://i.postimg.cc/t493HxpJ/2150895578.jpg",
+      "https://i.postimg.cc/Rhz3Qk0h/2150895589.jpg",
+      "https://i.postimg.cc/N03LB3mD/2150895575.jpg"
+    ],
+    "specialOffers": {
+      "offerPrice": 150,
+      "offerTitle": "Limited Time Offer!",
+      "offerDescription": "Book now and get a special discounted rate for a limited time only."
+    }
+  },
+  {
+    "title": "Executive Suite",
+    "description": "Our Executive Suite offers the ultimate in luxury and comfort. With premium amenities and personalized services, it's perfect for discerning travelers.",
+    "pricePerNight": 500,
+    "roomSize": "1500 sq ft",
+    "availability": "Yes",
+    "bookedDate": "",
+    "reviews": [],
+    "images": [
+      "https://i.postimg.cc/jSCjNxhv/2301.jpg",
+      "https://i.postimg.cc/ydh6BkV6/12375.jpg",
+      "https://i.postimg.cc/t493HxpJ/2150895578.jpg"
+    ],
+    "specialOffers": {
+      "offerPrice": 400,
+      "offerTitle": "Summer Special Discount!",
+      "offerDescription": "Book now and enjoy our exclusive summer discount on Executive Suite bookings."
+    }
+  },
+  {
+    "title": "Family Suite",
+    "description": "Our Family Suite is perfect for families or groups. With spacious rooms and separate living areas, it offers plenty of space for everyone to relax and unwind.",
+    "pricePerNight": 400,
+    "roomSize": "1200 sq ft",
+    "availability": "Yes",
+    "bookedDate": "",
+    "reviews": [],
+    "images": [
+      "https://i.postimg.cc/DzKth5ms/6282.jpg",
+      "https://i.postimg.cc/nzW2FcT5/2149871181.jpg",
+      "https://i.postimg.cc/kMQrj04C/2148285503.jpg"
+    ],
+    "specialOffers": {
+      "offerPrice": 300,
+      "offerTitle": "Special Family Offer!",
+      "offerDescription": "Book now and get a special discounted rate for Family Suite bookings, perfect for your family getaway!"
+    }
+  },
+  {
+    "title": "Standard Room",
+    "description": "Our Standard Room is a comfortable choice for those seeking quality accommodation at an affordable price. Enjoy modern amenities and a cozy atmosphere during your stay.",
+    "pricePerNight": 150,
+    "roomSize": "500 sq ft",
+    "availability": "Yes",
+    "bookedDate": "",
+    "reviews": [],
+    "images": [
+      "https://i.postimg.cc/8c668kCm/3034.jpg",
+      "https://i.postimg.cc/t7GV90ZQ/17926.jpg",
+      "https://i.postimg.cc/WpCCcs8F/12078.jpg"
+    ],
+    "specialOffers": {
+      "offerPrice": 120,
+      "offerTitle": "Early Bird Special!",
+      "offerDescription": "Book now and take advantage of our Early Bird Special for the Standard Room. Limited availability!"
+    }
+  },
+  {
+    "title": "Penthouse Suite",
+    "description": "Experience the epitome of luxury in our Penthouse Suite. With breathtaking views and lavish amenities, it's perfect for special occasions or a truly indulgent getaway.",
+    "pricePerNight": 800,
+    "roomSize": "2000 sq ft",
+    "availability": "Yes",
+    "bookedDate": "",
+    "reviews": [],
+    "images": [
+      "https://i.postimg.cc/W16HZgvg/12374.jpg",
+      "https://i.postimg.cc/s2TH6z12/1800.jpg",
+      "https://i.postimg.cc/vTVPZ6h1/2259.jpg"
+    ],
+    "specialOffers": {
+      "offerPrice": 650,
+      "offerTitle": "Exclusive Penthouse Offer!",
+      "offerDescription": "Book now and enjoy our exclusive offer for the Penthouse Suite. Experience luxury at a special discounted rate!"
+    }
+  }
+]
