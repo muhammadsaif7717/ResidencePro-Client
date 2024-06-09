@@ -12,13 +12,21 @@ const Apartment = () => {
     const [currentPage, setCurrentPage] = useState(0);
     const itemsPerPage = 6;
 
-    const { data: rooms = [] } = useQuery({
+    const { data: rooms = [] ,isLoading} = useQuery({
         queryKey: ['rooms'],
         queryFn: async () => {
             const res = await axiosSecure.get('/rooms');
             return res.data;
         }
     });
+
+    if (isLoading) {
+        return (
+            <div className="min-h-screen flex items-center justify-center">
+                <span className="loading loading-bars loading-lg scale-110"></span>
+            </div>
+        );
+    }
 
     // Calculate the number of pages
     const pageCount = Math.ceil(rooms.length / itemsPerPage);

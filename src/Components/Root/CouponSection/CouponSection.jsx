@@ -1,25 +1,27 @@
+import { useQuery } from "@tanstack/react-query";
 import CouponCard from "../CouponCard/CouponCard";
+import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 
 
 
 const CouponSection = () => {
-    const coupons = [
-        {
-          title: "Summer Special",
-          description: "Get 20% off on your first month's rent!",
-          discount: 20,
-        },
-        {
-          title: "Refer a Friend",
-          description: "Refer a friend and get 15% off on next month's rent!",
-          discount: 15,
-        },
-        {
-          title: "Early Bird Discount",
-          description: "Sign your lease early and save 10% on rent!",
-          discount: 10,
-        },
-      ];
+  const axiosPublic=useAxiosPublic();
+  const {data:coupons=[],isLoading}=useQuery({
+    queryKey:['coupons'],
+    queryFn: async()=>{
+      const res= await axiosPublic.get('/coupons');
+      return res.data;
+    }
+  });
+
+  if (isLoading) {
+    return (
+        <div className="min-h-screen flex items-center justify-center">
+            <span className="loading loading-bars loading-lg scale-110"></span>
+        </div>
+    );
+}
+
   return (
     <section className="bg-gray-100 py-16 px-4">
       <div className="max-w-6xl mx-auto">
