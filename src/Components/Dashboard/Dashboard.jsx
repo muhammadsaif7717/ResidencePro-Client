@@ -20,9 +20,9 @@ const Dashboard = () => {
     }
 
     return (
-        <div className="flex md:gap-5">
+        <div className="flex flex-col md:flex-row md:gap-5">
             {/*dshboard sidebar */}
-            <div className="w-5/12 md:w-64 min-h-screen bg-blue-400">
+            <div className="flex flex-row md:flex-col justify-between md:justify-start md:w-64 md:min-h-screen bg-blue-400">
                 {
                     isAdmin ?
                         <div>
@@ -36,7 +36,7 @@ const Dashboard = () => {
                                 </NavLink></li>
 
                             </ul>
-                            <hr className="w-3/4 mx-auto md:my-5" />
+                            <hr className="w-full mx-auto md:my-5 hidden md:blockpay" />
                         </div>
                         :
                         <>
@@ -50,7 +50,7 @@ const Dashboard = () => {
                                             </NavLink></li>
                                             <li><NavLink to={`announcements`}> <IoHome />Announcements</NavLink></li>
                                         </ul>
-                                        <hr className="w-3/4 mx-auto md:my-5" />
+                                        <hr className="w-full mx-auto md:my-5 hidden md:block" />
                                     </div>
                                     :
                                     <div>
@@ -58,33 +58,26 @@ const Dashboard = () => {
                                             <li><NavLink to={`my-profile`}> <IoHome />My Profile</NavLink></li>
                                             <li><NavLink to={`announcements`}> <IoHome />Announcements</NavLink></li>
                                         </ul>
-                                        <hr className="w-3/4 mx-auto md:my-5" />
+                                        <hr className="w-full mx-auto md:my-5 hidden md:block" />
                                     </div>
                             }
                         </>
                 }
 
                 {/* shared navlink */}
-                <ul className="menu pb-0  flex flex-col md:gap-2">
-                    <li><Link to={`/`}> <IoHome /> HOME</Link></li>
-                    <li><Link to={`/apartment`}> <IoHome /> Apartment</Link></li>
-                    <li><Link to={`/about`}> <IoMdMail /> About</Link></li>
-                </ul>
+                <div>
+                    <ul className="menu pb-0  flex flex-col md:gap-2">
+                        <li><Link to={`/`}> <IoHome /> HOME</Link></li>
+                        <li><Link to={`/apartment`}> <IoHome /> Apartment</Link></li>
+                        <li><Link to={`/about`}> <IoMdMail /> About</Link></li>
+                    </ul>
+                </div>
             </div>
+
             {/* dshboard content */}
             <div className="flex-1 p-2 md:p-5">
                 <Outlet></Outlet>
             </div>
-
-
-
-
-
-
-
-
-
-
         </div>
 
     );

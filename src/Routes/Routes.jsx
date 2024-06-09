@@ -18,6 +18,7 @@ import Announcements from "../Components/Dashboard/User&Member/Announcements/Ann
 import AdminRoute from "./AdminRoute";
 import MakePayment from "../Components/Dashboard/User&Member/MakePayment/MakePayment";
 import PaymentHistory from "../Components/Dashboard/User&Member/PaymentHistory/PaymentHistory";
+import PrivateRoute from "./PrivateRoute";
 
 
 
@@ -51,7 +52,7 @@ const router = createBrowserRouter([
     },
     {
         path: '/dashboard',
-        element: <Dashboard></Dashboard>,
+        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
         errorElement: <ErrorPage></ErrorPage>,
         children: [
             // routes for Admin
@@ -65,15 +66,15 @@ const router = createBrowserRouter([
             },
             {
                 path: 'manage-announcement',
-                element: <MakeAnnouncement></MakeAnnouncement>
+                element: <AdminRoute><MakeAnnouncement></MakeAnnouncement></AdminRoute>
             },
             {
                 path: 'agreement-requests',
-                element: <AgreementRequest></AgreementRequest>
+                element: <AdminRoute><AgreementRequest></AgreementRequest></AdminRoute>
             },
             {
                 path: 'manage-coupones',
-                element: <ManageCoupons></ManageCoupons>
+                element: <AdminRoute><ManageCoupons></ManageCoupons></AdminRoute>
             },
             // routes for user & member
             {
