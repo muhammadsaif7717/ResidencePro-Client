@@ -23,7 +23,7 @@ const MakeAnnouncement = () => {
                     Swal.fire({
                         position: "center",
                         icon: "success",
-                        title: "User Created Successfully",
+                        title: "Announcement Created Successfully",
                         showConfirmButton: false,
                         timer: 1500
                     });
@@ -33,7 +33,7 @@ const MakeAnnouncement = () => {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen">
+        <div className="flex flex-col items-center justify-center min-h-[70vh] md:min-h-screen">
             <div className="w-2/3 bg-base-200 shadow-xl p-10 border">
                 <h1 className="text-4xl font-semibold text-center mb-5">Make an Announcement</h1>
                 <form onSubmit={handleSubmit} className="space-y-4">

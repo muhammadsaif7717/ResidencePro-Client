@@ -23,7 +23,7 @@ const CouponSection = () => {
   }
 
   return (
-    <section className="bg-gray-100 py-16 px-4">
+    <section className="bg-gray-100 py-16 px-4 mt-10">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl font-bold text-gray-800 text-center mb-8">Special Coupons</h2>
         <div className="flex flex-wrap justify-center">

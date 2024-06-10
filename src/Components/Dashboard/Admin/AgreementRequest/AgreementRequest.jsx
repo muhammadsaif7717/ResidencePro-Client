@@ -22,7 +22,6 @@ const AgreementRequest = () => {
             rent: agreement.rent,
             acceptDate: new Date(),
         };
-        console.log(userAgreement)
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -30,7 +29,7 @@ const AgreementRequest = () => {
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!"
+            confirmButtonText: "Yes, Accept"
         }).then((result) => {
             if (result.isConfirmed) {
                 // accept , update status & delete
@@ -40,7 +39,7 @@ const AgreementRequest = () => {
                         if (res.data.success) {
                             Swal.fire({
                                 title: "Accepted!",
-                                text: "Your file has been deleted.",
+                                text: "Request Accepted",
                                 icon: "success"
                             });
 

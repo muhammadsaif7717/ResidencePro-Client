@@ -5,15 +5,16 @@ import useAuth from "../../../Hooks/useAuth";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import useAdmin from "../../../Hooks/useAdmin";
 
 const Apartment = () => {
     const { user } = useAuth();
     const navigate = useNavigate();
+    const [isAdmin] = useAdmin();
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
     const [currentPage, setCurrentPage] = useState(0);
     const itemsPerPage = 6;
-
     const { data: rooms = [], isLoading } = useQuery({
         queryKey: ['rooms'],
         queryFn: async () => {
@@ -22,7 +23,26 @@ const Apartment = () => {
         }
     });
 
-    if (isLoading) {
+    const { data: agreements = [], isLoadingAgreements, refetch } = useQuery({
+        queryKey: ['agreements'],
+        queryFn: async () => {
+            const res = await axiosPublic.get('/agreements');
+            return res.data;
+        }
+    });
+    const { data: users = [], isLoadingUsers, refetch: reload } = useQuery({
+        queryKey: ['users'],
+        queryFn: async () => {
+            const res = await axiosPublic.get('/users');
+            return res.data;
+        }
+    });
+
+
+    const isUserAgreements = agreements.find(agreement => agreement?.userEmail === user?.email);
+    const isUserMember = users.find(userDb => userDb?.role === 'member');
+
+    if (isLoading || isLoadingAgreements || isLoadingUsers) {
         return (
             <div className="min-h-screen flex items-center justify-center">
                 <span className="loading loading-bars loading-lg scale-110"></span>
@@ -75,6 +95,8 @@ const Apartment = () => {
                                     showConfirmButton: false,
                                     timer: 1500
                                 });
+                                refetch();
+                                reload();
                             }
 
                         })
@@ -102,7 +124,14 @@ const Apartment = () => {
                                 <p className="text-gray-700">Floor: {room.floorNo}</p>
                                 <p className="text-gray-700">Block: {room.blockName}</p>
                                 <p className="text-gray-700">Rent: ${room.rent}</p>
-                                <button onClick={() => handleButtonClick(room)} className="mt-4 bg-blue-500 text-white py-2 px-4 rounded">Agreement</button>
+                                <button
+                                    disabled={isUserAgreements || isUserMember || isAdmin}
+                                    onClick={() => handleButtonClick(room)}
+                                    className={`mt-4 py-2 px-4 rounded ${isUserAgreements || isUserMember || isAdmin ? 'bg-gray-400 text-gray-700 cursor-not-allowed' : 'bg-blue-500 text-white hover:bg-blue-600 hover:text-white'}`}
+                                >
+                                    {isUserAgreements || isUserMember ? 'Agreemented' : 'Agreement'}
+                                </button>
+
                             </div>
                         </div>
                     ))

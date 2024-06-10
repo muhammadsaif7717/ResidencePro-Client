@@ -21,7 +21,7 @@ const NavBar = () => {
 
 
   const links = (
-    <div className="text-white">
+    <div className="text-black lg:text-white flex flex-col lg:flex-row gap-5">
       <NavLink className="px-5 text-lg" to="/">
         Home
       </NavLink>
@@ -60,7 +60,7 @@ const NavBar = () => {
             </div>
             <nav
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 border rounded-box w-52"
             >
               {links}
             </nav>

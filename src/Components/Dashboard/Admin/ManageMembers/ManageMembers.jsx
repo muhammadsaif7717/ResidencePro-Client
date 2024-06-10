@@ -34,8 +34,8 @@ const ManageMembers = () => {
                     .then(res => {
                         if (res.data.success) {
                             Swal.fire({
-                                title: "Deleted!",
-                                text: "Your file has been deleted.",
+                                title: "Member Deleted!",
+                                text: "Member role has been deleted",
                                 icon: "success"
                             });
 
@@ -56,7 +56,7 @@ const ManageMembers = () => {
             </div>
 
             <div className="overflow-x-auto">
-                <table className="table w-full">
+                <table className="table ho w-full">
                     {/* head */}
                     <thead>
                         <tr>
@@ -95,7 +95,7 @@ const ManageMembers = () => {
                                     </td>
 
                                     <td>
-                                        <button onClick={() => handleDemote(user.email)} className="btn btn-ghost text-red-500"><FaTrashAlt></FaTrashAlt></button>
+                                        <button disabled={user.role === 'admin'} onClick={() => handleDemote(user.email)} className="btn btn-ghost text-red-500"><FaTrashAlt></FaTrashAlt></button>
                                     </td>
                                 </tr>
                             )

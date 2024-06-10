@@ -31,6 +31,7 @@ const ManageCoupons = () => {
             code: code,
             discount: discount,
             description: description,
+            availability: "available",
         }
 
         console.log(coupon)
@@ -60,6 +61,28 @@ const ManageCoupons = () => {
 
     refetch();
 
+    const handleChange = (id) => {
+        axiosPublic.put(`/coupons/${id}`)
+            .then(res => {
+                if (res.data.success) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success',
+                        text: 'Cupon Updated Successfully!',
+                    });
+                    refetch();
+                }
+            })
+            .catch(error => {
+                console.error('Error updating availability:', error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong while updating availability!',
+                });
+            });
+    };
+
     return (
         <div className="p-5">
             <div className="flex justify-between items-center mb-5">
@@ -73,6 +96,8 @@ const ManageCoupons = () => {
                             <th className="border border-gray-300 p-2">Code</th>
                             <th className="border border-gray-300 p-2">Discount</th>
                             <th className="border border-gray-300 p-2">Description</th>
+                            <th className="border border-gray-300 p-2">Availability</th>
+                            <th className="border border-gray-300 p-2">Manage</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -81,6 +106,10 @@ const ManageCoupons = () => {
                                 <td className="border border-gray-300 p-2">{coupon.code}</td>
                                 <td className="border border-gray-300 p-2">{coupon.discount}%</td>
                                 <td className="border border-gray-300 p-2">{coupon.description}</td>
+                                <td className="border border-gray-300 p-2">{coupon.availability}</td>
+                                <td className="border border-gray-300 p-2">
+                                    <button onClick={() => handleChange(coupon._id)} className="btn btn-accent">Change</button>
+                                </td>
                             </tr>
                         ))}
                     </tbody>
