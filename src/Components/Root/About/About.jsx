@@ -7,8 +7,8 @@ const About = () => {
 
     return (
         <div className="flex justify-center items-center min-h-[83vh] ">
-            <Helmet>
-                <title>Template | About</title>
+             <Helmet>
+                <title>ResidencePro | About</title>
             </Helmet>
             <div className="animate__animated animate__zoomIn hero bg-gray-100 md:p-2 rounded-xl">
                 <div className="hero-content text-center mt-12 mb-12">

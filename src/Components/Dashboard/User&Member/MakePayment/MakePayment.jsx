@@ -7,6 +7,7 @@ import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Helmet } from 'react-helmet-async';
 
 const stripePromise = loadStripe(import.meta.env.VITE_Payment_Getway_PK);
 
@@ -61,7 +62,10 @@ const MakePayment = () => {
     ];
 
     return (
-        <div>
+        <div className='mt-7'>
+             <Helmet>
+                <title>ResidencePro | Make Payment</title>
+            </Helmet>
             <h2 className="text-2xl font-semibold mb-4">Make Your Payment</h2>
             <div className='card-body border shadow-lg rounded-lg'>
                 <p><strong>Email:</strong> {currentUser.email}</p>

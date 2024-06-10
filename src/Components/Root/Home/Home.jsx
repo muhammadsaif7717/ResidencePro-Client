@@ -8,7 +8,7 @@ const Home = () => {
     return (
         <>
             <Helmet>
-                <title>Template | Home</title>
+                <title>ResidencePro | Home</title>
             </Helmet>
 
             <div className="min-h-screen">

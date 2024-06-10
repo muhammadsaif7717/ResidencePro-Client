@@ -2,6 +2,7 @@ import  { useState } from 'react';
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 import useAuth from '../../../../Hooks/useAuth';
+import { Helmet } from 'react-helmet-async';
 
 const PaymentHistory = () => {
     const { user } = useAuth();
@@ -27,7 +28,10 @@ const PaymentHistory = () => {
     };
 
     return (
-        <div className="container mx-auto p-4">
+        <div className="container mx-auto p-4 mt-4">
+             <Helmet>
+                <title>ResidencePro | Payemnt History</title>
+            </Helmet>
             <h2 className="text-2xl font-semibold mb-4">{user.displayName}{`'`}s Payment History</h2>
             <div className="flex mb-4">
                 <input

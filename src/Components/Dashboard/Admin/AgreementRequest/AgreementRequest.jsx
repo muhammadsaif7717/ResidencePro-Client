@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const AgreementRequest = () => {
     const axiosPublic = useAxiosPublic();
@@ -59,7 +60,7 @@ const AgreementRequest = () => {
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!"
+            confirmButtonText: "Yes, Reject!"
         }).then((result) => {
             if (result.isConfirmed) {
                 // reject , update status & delete
@@ -67,8 +68,8 @@ const AgreementRequest = () => {
                     .then(res => {
                         if (res.data.success) {
                             Swal.fire({
-                                title: "Deleted!",
-                                text: "Your file has been deleted.",
+                                title: "Rejected!",
+                                text: "Request Rejected.",
                                 icon: "success"
                             });
                             //refetch to refresh
@@ -85,6 +86,9 @@ const AgreementRequest = () => {
     return (
         <div>
             <h1 className="text-3xl font-semibold">Agreement Requests: {agreements.length}</h1>
+            <Helmet>
+                <title>ResidencePro | Agreement Requests</title>
+            </Helmet>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-5">
                 {agreements.map(agreement => (

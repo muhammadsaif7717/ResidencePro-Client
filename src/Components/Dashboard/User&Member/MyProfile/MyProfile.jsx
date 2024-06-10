@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../../Hooks/useAuth";
 import useMember from "../../../../Hooks/useMember";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
+import { Helmet } from "react-helmet-async";
 
 
 const MyProfile = () => {
@@ -28,7 +29,10 @@ const MyProfile = () => {
     }
 
     return (
-        <div className="flex flex-col items-center justify-center">
+        <div className="flex flex-col items-center justify-center mt-7">
+             <Helmet>
+                <title>ResidencePro | My Profile</title>
+            </Helmet>
             <h1 className="text-4xl font-semibold text-center">Welcome <span className="text-green-600">{currentUser?.name || user.displayName}!</span></h1>
 
             <div className="card w-2/3 bg-base-200 shadow-xl mt-10 border">

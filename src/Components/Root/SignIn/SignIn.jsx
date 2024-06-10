@@ -76,8 +76,8 @@ const SignIn = () => {
     }
     return (
         <>
-            <Helmet>
-                <title>Bistro Boss | Login</title>
+             <Helmet>
+                <title>ResidencePro | Sign In</title>
             </Helmet>
             <div className="hero min-h-screen bg-base-200 signIn-container">
                 <div className="hero-content flex justify-center items-center w-full">

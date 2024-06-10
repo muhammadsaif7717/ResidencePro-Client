@@ -84,6 +84,14 @@ const SignUp = () => {
                         // console.log('User Profile Updated')
                     })
             })
+            .catch(err => {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Something went wrong!",
+                });
+                console.log(err.message)
+            })
     };
 
     // const handleImageChange = (e) => {
@@ -95,8 +103,8 @@ const SignUp = () => {
 
     return (
         <>
-            <Helmet>
-                <title>Bistro Boss | Sign Up</title>
+             <Helmet>
+                <title>ResidencePro | Sign Up</title>
             </Helmet>
             <div className="hero min-h-screen bg-base-200 sign-up-container">
                 <div className="hero-content flex justify-center items-center w-full">

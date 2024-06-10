@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 
 const ManageCoupons = () => {
@@ -85,6 +86,9 @@ const ManageCoupons = () => {
 
     return (
         <div className="p-5">
+             <Helmet>
+                <title>ResidencePro | Manage Coupons</title>
+            </Helmet>
             <div className="flex justify-between items-center mb-5">
                 <h1 className="text-4xl font-semibold">Manage Coupons</h1>
                 <button onClick={() => setIsModalOpen(true)} className="btn btn-primary">Add Coupon</button>

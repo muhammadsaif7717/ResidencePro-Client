@@ -3,6 +3,7 @@ import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 
 const ManageMembers = () => {
@@ -50,6 +51,9 @@ const ManageMembers = () => {
 
     return (
         <div>
+             <Helmet>
+                <title>ResidencePro | Manage Members</title>
+            </Helmet>
             <div className="flex justify-evenly">
                 <h1 className="text-4xl font-semibold">All Users</h1>
                 <h1 className="text-4xl font-semibold">Total Users: {users.length}</h1>

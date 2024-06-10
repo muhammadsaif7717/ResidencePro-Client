@@ -6,6 +6,7 @@ import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import useAdmin from "../../../Hooks/useAdmin";
+import { Helmet } from "react-helmet-async";
 
 const Apartment = () => {
     const { user } = useAuth();
@@ -113,6 +114,9 @@ const Apartment = () => {
 
     return (
         <div className="pt-24 min-h-screen mb-14">
+             <Helmet>
+                <title>ResidencePro | Apartments</title>
+            </Helmet>
             <h2 className="text-3xl font-bold text-center mb-8">Apartments</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 ">
                 {

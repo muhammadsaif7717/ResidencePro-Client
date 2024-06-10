@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
+import { Helmet } from "react-helmet-async";
 
 const Announcements = () => {
     const axiosPublic = useAxiosPublic();
@@ -19,7 +20,10 @@ const Announcements = () => {
         );
     }
     return (
-        <div className="p-5">
+        <div className="p-5 mt-2">
+             <Helmet>
+                <title>ResidencePro | Announcements</title>
+            </Helmet>
             <h1 className="text-4xl font-semibold text-center mb-5">Announcements</h1>
             <div className="overflow-x-auto">
                 <table className="table-auto w-full border-collapse border border-gray-300">

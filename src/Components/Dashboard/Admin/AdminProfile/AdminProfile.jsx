@@ -3,6 +3,7 @@ import useAxiosPublic from '../../../../Hooks/useAxiosPublic';
 import useAuth from '../../../../Hooks/useAuth';
 import useAdmin from '../../../../Hooks/useAdmin';
 import { useQuery } from '@tanstack/react-query';
+import { Helmet } from 'react-helmet-async';
 
 const AdminProfile = () => {
     const axiosPublic = useAxiosPublic();
@@ -65,6 +66,9 @@ const AdminProfile = () => {
 
     return (
         <div className="p-5">
+             <Helmet>
+                <title>ResidencePro | Admin Home</title>
+            </Helmet>
             <h1 className="text-3xl font-semibold mb-5">Admin Profile</h1>
             <div className="flex items-center mb-5">
                 <img src={adminInfo.profileImage} alt="Admin" className="w-20 h-20 rounded-full mr-4" />

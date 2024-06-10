@@ -1,5 +1,6 @@
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
+import { Helmet } from "react-helmet-async";
 
 
 const MakeAnnouncement = () => {
@@ -34,6 +35,9 @@ const MakeAnnouncement = () => {
 
     return (
         <div className="flex flex-col items-center justify-center min-h-[70vh] md:min-h-screen">
+             <Helmet>
+                <title>ResidencePro | Make Announcements</title>
+            </Helmet>
             <div className="w-2/3 bg-base-200 shadow-xl p-10 border">
                 <h1 className="text-4xl font-semibold text-center mb-5">Make an Announcement</h1>
                 <form onSubmit={handleSubmit} className="space-y-4">
