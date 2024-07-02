@@ -25,7 +25,7 @@
 
   <h2><strong>Technologies Used</strong></h2>
   <ul>
-    <li><strong>Front-End:</strong> React, Bootstrap (for responsive design)</li>
+    <li><strong>Front-End:</strong> React, Tailwind (for responsive design)</li>
     <li><strong>Back-End:</strong> Node.js, Express.js (for API), MongoDB (as database)</li>
     <li><strong>Authentication:</strong> JSON Web Tokens (JWT) for secure authentication</li>
   </ul>
