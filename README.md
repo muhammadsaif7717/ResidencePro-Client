@@ -36,7 +36,7 @@
       <pre><code>git clone https://github.com/muhammadsaif7717/ResidencePro-Client.git</code></pre>
     </li>
     <li><strong>Navigate to the Project Directory:</strong>
-      <pre><code>cd residencepro</code></pre>
+      <pre><code>cd ResidencePro-Client</code></pre>
     </li>
     <li><strong>Install Dependencies:</strong>
       <pre><code>npm install</code></pre>
