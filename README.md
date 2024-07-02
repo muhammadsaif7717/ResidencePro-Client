@@ -4,9 +4,7 @@
 
   <h2><strong>Project Overview</strong></h2>
   <p>
-    ResidencePro is a property management system designed to simplify the management of residential properties. 
-    It addresses the complexities involved in managing apartments, tenants, payments, and communications efficiently. 
-    By offering features like user authentication, real-time notifications, and an admin dashboard, ResidencePrp aims to enhance property management processes.
+    ResidencePro is a robust property management website designed to streamline the process of managing rental properties. Users can easily track payment histories, manage coupons, and oversee tenant information, all within a secure and user-friendly environment.
   </p>
 
   <h2><strong>Features and Characteristics</strong></h2>
