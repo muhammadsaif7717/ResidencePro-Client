@@ -28,7 +28,6 @@
     <li><strong>Front-End:</strong> React, Bootstrap (for responsive design)</li>
     <li><strong>Back-End:</strong> Node.js, Express.js (for API), MongoDB (as database)</li>
     <li><strong>Authentication:</strong> JSON Web Tokens (JWT) for secure authentication</li>
-    <li><strong>Real-time Updates:</strong> Socket.IO for real-time communication</li>
   </ul>
 
   <h2><strong>Steps to Clone and Run Locally</strong></h2>
@@ -37,7 +36,7 @@
       <pre><code>git clone https://github.com/muhammadsaif7717/ResidencePro-Client.git</code></pre>
     </li>
     <li><strong>Navigate to the Project Directory:</strong>
-      <pre><code>cd residenceprp</code></pre>
+      <pre><code>cd residencepro</code></pre>
     </li>
     <li><strong>Install Dependencies:</strong>
       <pre><code>npm install</code></pre>
