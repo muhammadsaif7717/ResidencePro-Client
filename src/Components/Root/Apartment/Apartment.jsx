@@ -5,13 +5,13 @@ import useAuth from "../../../Hooks/useAuth";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
-import useAdmin from "../../../Hooks/useAdmin";
+// import useAdmin from "../../../Hooks/useAdmin";
 import { Helmet } from "react-helmet-async";
 
 const Apartment = () => {
     const { user } = useAuth();
     const navigate = useNavigate();
-    const [isAdmin] = useAdmin();
+    // const [isAdmin] = useAdmin();
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
     const [currentPage, setCurrentPage] = useState(0);
@@ -31,19 +31,19 @@ const Apartment = () => {
             return res.data;
         }
     });
-    const { data: users = [], isLoadingUsers, refetch: reload } = useQuery({
-        queryKey: ['users'],
-        queryFn: async () => {
-            const res = await axiosPublic.get('/users');
-            return res.data;
-        }
-    });
+    // const { data: users = [], isLoadingUsers, refetch: reload } = useQuery({
+    //     queryKey: ['users'],
+    //     queryFn: async () => {
+    //         const res = await axiosPublic.get('/users');
+    //         return res.data;
+    //     }
+    // });
 
 
     const isUserAgreements = agreements.find(agreement => agreement?.userEmail === user?.email);
-    const isUserMember = users.find(userDb => userDb?.role === 'member');
+    // const isUserMember = users.find(userDb => userDb?.role === 'member');
 
-    if (isLoading || isLoadingAgreements || isLoadingUsers) {
+    if (isLoading || isLoadingAgreements ) {
         return (
             <div className="min-h-screen flex items-center justify-center">
                 <span className="loading loading-bars loading-lg scale-110"></span>
@@ -97,7 +97,6 @@ const Apartment = () => {
                                     timer: 1500
                                 });
                                 refetch();
-                                reload();
                             }
 
                         })
@@ -129,11 +128,11 @@ const Apartment = () => {
                                 <p className="text-gray-700">Block: {room.blockName}</p>
                                 <p className="text-gray-700">Rent: ${room.rent}</p>
                                 <button
-                                    disabled={isUserAgreements || isUserMember || isAdmin}
+                                    disabled={isUserAgreements}
                                     onClick={() => handleButtonClick(room)}
-                                    className={`mt-4 py-2 px-4 rounded ${isUserAgreements || isUserMember || isAdmin ? 'bg-gray-400 text-gray-700 cursor-not-allowed' : 'bg-blue-500 text-white hover:bg-blue-600 hover:text-white'}`}
+                                    className={`mt-4 py-2 px-4 rounded ${isUserAgreements? 'bg-gray-400 text-gray-700 cursor-not-allowed' : 'bg-blue-500 text-white hover:bg-blue-600 hover:text-white'}`}
                                 >
-                                    {isUserAgreements || isUserMember ? 'Agreemented' : 'Agreement'}
+                                    {isUserAgreements? 'Agreemented' : 'Agreement'}
                                 </button>
 
                             </div>

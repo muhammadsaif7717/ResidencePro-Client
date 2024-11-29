@@ -1,4 +1,4 @@
-import  { useState } from 'react';
+import { useState } from 'react';
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 import useAuth from '../../../../Hooks/useAuth';
@@ -19,8 +19,10 @@ const PaymentHistory = () => {
         }
     });
 
+    const currentUserPayments = payments.filter(payment => payment.email === user.email);
+
     const handleSearch = () => {
-        const filteredPayments = payments.filter(payment =>
+        const filteredPayments = currentUserPayments.filter(payment =>
             payment.month.toLowerCase().includes(searchQuery.toLowerCase())
         );
         setSearchResults(filteredPayments);
@@ -29,8 +31,8 @@ const PaymentHistory = () => {
 
     return (
         <div className="container mx-auto p-4 mt-4">
-             <Helmet>
-                <title>ResidencePro | Payemnt History</title>
+            <Helmet>
+                <title>ResidencePro | Payment History</title>
             </Helmet>
             <h2 className="text-2xl font-semibold mb-4">{user.displayName}{`'`}s Payment History</h2>
             <div className="flex mb-4">
@@ -58,7 +60,7 @@ const PaymentHistory = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {(searched ? searchResults : payments).map(payment => ( // Display searchResults if search has been performed
+                        {(searched ? searchResults : currentUserPayments).map(payment => ( // Display searchResults if search has been performed
                             <tr key={payment._id} className="hover:bg-gray-100">
                                 <td className="border border-gray-300 p-2">${payment.amount}</td>
                                 <td className="border border-gray-300 p-2">{payment.paymentMethodId}</td>
