@@ -5,17 +5,19 @@ import useAuth from "../../../Hooks/useAuth";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
-// import useAdmin from "../../../Hooks/useAdmin";
 import { Helmet } from "react-helmet-async";
+import { MdApartment, MdLocationOn } from "react-icons/md";
+import { FaBuilding, FaDollarSign, FaCheck } from "react-icons/fa";
+import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 
 const Apartment = () => {
     const { user } = useAuth();
     const navigate = useNavigate();
-    // const [isAdmin] = useAdmin();
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
     const [currentPage, setCurrentPage] = useState(0);
     const itemsPerPage = 6;
+
     const { data: rooms = [], isLoading } = useQuery({
         queryKey: ['rooms'],
         queryFn: async () => {
@@ -31,36 +33,29 @@ const Apartment = () => {
             return res.data;
         }
     });
-    // const { data: users = [], isLoadingUsers, refetch: reload } = useQuery({
-    //     queryKey: ['users'],
-    //     queryFn: async () => {
-    //         const res = await axiosPublic.get('/users');
-    //         return res.data;
-    //     }
-    // });
-
 
     const isUserAgreements = agreements.find(agreement => agreement?.userEmail === user?.email);
-    // const isUserMember = users.find(userDb => userDb?.role === 'member');
 
-    if (isLoading || isLoadingAgreements ) {
+    if (isLoading || isLoadingAgreements) {
         return (
-            <div className="min-h-screen flex items-center justify-center">
-                <span className="loading loading-bars loading-lg scale-110"></span>
+            <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-slate-50 via-white to-blue-50 dark:from-gray-900 dark:via-slate-800 dark:to-gray-900">
+                <div className="relative">
+                    <div className="w-20 h-20 border-4 border-blue-200 dark:border-blue-900 border-t-blue-600 dark:border-t-blue-400 rounded-full animate-spin"></div>
+                    <MdApartment className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 text-blue-600 dark:text-blue-400" />
+                </div>
+                <p className="mt-4 text-gray-600 dark:text-gray-400 font-medium">Loading apartments...</p>
             </div>
         );
     }
 
-    // Calculate the number of pages
+    // Calculate pagination
     const pageCount = Math.ceil(rooms.length / itemsPerPage);
-
-    // Get the rooms for the current page
     const offset = currentPage * itemsPerPage;
     const currentRooms = rooms.slice(offset, offset + itemsPerPage);
 
-    // Handle page change
     const handlePageClick = (pageIndex) => {
         setCurrentPage(pageIndex);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
     const handleButtonClick = async (room) => {
@@ -74,16 +69,24 @@ const Apartment = () => {
                 rent: room.rent,
                 date: new Date(),
                 status: 'pending'
-            }
+            };
 
             Swal.fire({
-                title: "Are you sure?",
-                text: "You won't be able to revert this!",
+                title: "Confirm Agreement Request",
+                html: `
+                    <div class="text-left space-y-2">
+                        <p><strong>Apartment:</strong> #${room.apartmentNo}</p>
+                        <p><strong>Block:</strong> ${room.blockName}</p>
+                        <p><strong>Floor:</strong> ${room.floorNo}</p>
+                        <p><strong>Rent:</strong> $${room.rent}/month</p>
+                    </div>
+                `,
                 icon: "info",
                 showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Yes!"
+                confirmButtonColor: "#3B82F6",
+                cancelButtonColor: "#EF4444",
+                confirmButtonText: "Yes, Submit Request",
+                cancelButtonText: "Cancel"
             }).then((result) => {
                 if (result.isConfirmed) {
                     axiosPublic.post('/agreements', agreement)
@@ -92,83 +95,200 @@ const Apartment = () => {
                                 Swal.fire({
                                     position: "center",
                                     icon: "success",
-                                    title: "Agreement is pending",
+                                    title: "Agreement Request Submitted!",
+                                    text: "Your request is pending approval",
                                     showConfirmButton: false,
-                                    timer: 1500
+                                    timer: 2000
                                 });
                                 refetch();
                             }
-
-                        })
+                        });
                 }
             });
-
+        } else {
+            Swal.fire({
+                title: "Sign In Required",
+                text: "Please sign in to request an apartment agreement",
+                icon: "warning",
+                confirmButtonColor: "#3B82F6",
+                confirmButtonText: "Go to Sign In"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    navigate('/sign-in');
+                }
+            });
         }
-        else {
-            navigate('/sign-up')
-        }
-
-
-    }
+    };
 
     return (
-        <div className="pt-24 min-h-screen mb-14">
-             <Helmet>
+        <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 dark:from-gray-900 dark:via-slate-800 dark:to-gray-900 transition-colors duration-500">
+            <Helmet>
                 <title>ResidencePro | Apartments</title>
             </Helmet>
-            <h2 className="text-3xl font-bold text-center mb-8">Apartments</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 ">
-                {
-                    currentRooms?.map(room => (
-                        <div key={room._id} className="bg-white shadow-md rounded-lg overflow-hidden">
-                            <img src={room.image} alt={`Apartment ${room.apartmentNo}`} className="w-full h-48 object-cover" />
-                            <div className="p-4">
-                                <h3 className="text-xl font-semibold mb-2">Apartment No: {room.apartmentNo}</h3>
-                                <p className="text-gray-700">Floor: {room.floorNo}</p>
-                                <p className="text-gray-700">Block: {room.blockName}</p>
-                                <p className="text-gray-700">Rent: ${room.rent}</p>
+
+            {/* Header Section */}
+            <div className="pt-24 pb-12 px-4">
+                <div className="max-w-7xl mx-auto text-center">
+                    <div className="inline-block mb-4">
+                        <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto">
+                            <MdApartment className="w-8 h-8 text-white" />
+                        </div>
+                    </div>
+                    <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
+                        Available Apartments
+                    </h1>
+                    <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                        Browse our collection of premium apartments. Find your perfect home today.
+                    </p>
+                    
+                    {/* Stats */}
+                    <div className="flex justify-center gap-8 mt-8">
+                        <div className="text-center">
+                            <div className="text-3xl font-bold text-blue-600 dark:text-blue-400">{rooms.length}</div>
+                            <div className="text-sm text-gray-600 dark:text-gray-400">Total Units</div>
+                        </div>
+                        <div className="text-center">
+                            <div className="text-3xl font-bold text-purple-600 dark:text-purple-400">{pageCount}</div>
+                            <div className="text-sm text-gray-600 dark:text-gray-400">Pages</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Apartments Grid */}
+            <div className="max-w-7xl mx-auto px-4 pb-16">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {currentRooms?.map((room, index) => (
+                        <div
+                            key={room._id}
+                            className="group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:-translate-y-2"
+                            style={{
+                                animation: `fadeInUp 0.6s ease-out ${index * 0.1}s both`
+                            }}
+                        >
+                            {/* Image */}
+                            <div className="relative overflow-hidden h-56">
+                                <img
+                                    src={room.image}
+                                    alt={`Apartment ${room.apartmentNo}`}
+                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                />
+                                <div className="absolute top-4 right-4 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-semibold shadow-lg">
+                                    #{room.apartmentNo}
+                                </div>
+                                {isUserAgreements && (
+                                    <div className="absolute top-4 left-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-semibold shadow-lg flex items-center gap-1">
+                                        <FaCheck className="w-3 h-3" />
+                                        Agreed
+                                    </div>
+                                )}
+                            </div>
+
+                            {/* Content */}
+                            <div className="p-6">
+                                <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-gray-100">
+                                    Apartment #{room.apartmentNo}
+                                </h3>
+
+                                {/* Details */}
+                                <div className="space-y-3 mb-6">
+                                    <div className="flex items-center gap-3 text-gray-700 dark:text-gray-300">
+                                        <div className="w-10 h-10 bg-blue-50 dark:bg-blue-900/30 rounded-lg flex items-center justify-center">
+                                            <MdLocationOn className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                                        </div>
+                                        <div>
+                                            <p className="text-xs text-gray-500 dark:text-gray-400">Floor</p>
+                                            <p className="font-semibold">{room.floorNo}</p>
+                                        </div>
+                                    </div>
+
+                                    <div className="flex items-center gap-3 text-gray-700 dark:text-gray-300">
+                                        <div className="w-10 h-10 bg-purple-50 dark:bg-purple-900/30 rounded-lg flex items-center justify-center">
+                                            <FaBuilding className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+                                        </div>
+                                        <div>
+                                            <p className="text-xs text-gray-500 dark:text-gray-400">Block</p>
+                                            <p className="font-semibold">{room.blockName}</p>
+                                        </div>
+                                    </div>
+
+                                    <div className="flex items-center gap-3 text-gray-700 dark:text-gray-300">
+                                        <div className="w-10 h-10 bg-green-50 dark:bg-green-900/30 rounded-lg flex items-center justify-center">
+                                            <FaDollarSign className="w-5 h-5 text-green-600 dark:text-green-400" />
+                                        </div>
+                                        <div>
+                                            <p className="text-xs text-gray-500 dark:text-gray-400">Monthly Rent</p>
+                                            <p className="font-bold text-xl text-green-600 dark:text-green-400">${room.rent}</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Button */}
                                 <button
                                     disabled={isUserAgreements}
                                     onClick={() => handleButtonClick(room)}
-                                    className={`mt-4 py-2 px-4 rounded ${isUserAgreements? 'bg-gray-400 text-gray-700 cursor-not-allowed' : 'bg-blue-500 text-white hover:bg-blue-600 hover:text-white'}`}
+                                    className={`w-full py-3 rounded-xl font-semibold transition-all duration-200 ${
+                                        isUserAgreements
+                                            ? 'bg-gray-200 dark:bg-gray-700 text-gray-500 dark:text-gray-400 cursor-not-allowed'
+                                            : 'bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-md hover:shadow-lg transform hover:scale-105'
+                                    }`}
                                 >
-                                    {isUserAgreements? 'Agreemented' : 'Agreement'}
+                                    {isUserAgreements ? 'Already Requested' : 'Request Agreement'}
                                 </button>
-
                             </div>
                         </div>
-                    ))
-                }
-            </div>
-            <div className="flex  items-center justify-center mt-8">
-                <div className="flex items-center gap-5 justify-center">
-                    <button
-                        onClick={() => handlePageClick(currentPage - 1)}
-                        className={`page-link p-2 border border-gray-300 rounded cursor-pointer  ${currentPage === 0 ? 'bg-gray-300 text-gray-500 cursor-not-allowed' : 'bg-white text-black'
-                            }`}
-                        disabled={currentPage === 0}
-                    >
-                        Previous
-                    </button>
-                    {Array.from({ length: pageCount }, (_, index) => (
-                        <button
-                            key={index}
-                            onClick={() => handlePageClick(index)}
-                            className={`page-link p-2 border border-gray-300 rounded cursor-pointer  ${currentPage === index ? 'bg-red-500 text-white' : 'bg-white text-black'
-                                }`}
-                        >
-                            {index + 1}
-                        </button>
                     ))}
-                    <button
-                        onClick={() => handlePageClick(currentPage + 1)}
-                        className={`page-link p-2 border border-gray-300 rounded cursor-pointer  ${currentPage === pageCount - 1 ? 'bg-gray-300 text-gray-500 cursor-not-allowed' : 'bg-white text-black'
-                            }`}
-                        disabled={currentPage === pageCount - 1}
-                    >
-                        Next
-                    </button>
                 </div>
+
+                {/* Pagination */}
+                {pageCount > 1 && (
+                    <div className="mt-12 flex items-center justify-center gap-2">
+                        {/* Previous Button */}
+                        <button
+                            onClick={() => handlePageClick(currentPage - 1)}
+                            disabled={currentPage === 0}
+                            className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
+                                currentPage === 0
+                                    ? 'bg-gray-200 dark:bg-gray-700 text-gray-400 cursor-not-allowed'
+                                    : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-600 shadow-sm hover:shadow-md'
+                            }`}
+                        >
+                            <HiChevronLeft className="w-5 h-5" />
+                            <span className="hidden sm:inline">Previous</span>
+                        </button>
+
+                        {/* Page Numbers */}
+                        <div className="flex gap-2">
+                            {Array.from({ length: pageCount }, (_, index) => (
+                                <button
+                                    key={index}
+                                    onClick={() => handlePageClick(index)}
+                                    className={`w-10 h-10 rounded-lg font-semibold transition-all duration-200 ${
+                                        currentPage === index
+                                            ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg scale-110'
+                                            : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-600'
+                                    }`}
+                                >
+                                    {index + 1}
+                                </button>
+                            ))}
+                        </div>
+
+                        {/* Next Button */}
+                        <button
+                            onClick={() => handlePageClick(currentPage + 1)}
+                            disabled={currentPage === pageCount - 1}
+                            className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
+                                currentPage === pageCount - 1
+                                    ? 'bg-gray-200 dark:bg-gray-700 text-gray-400 cursor-not-allowed'
+                                    : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-600 shadow-sm hover:shadow-md'
+                            }`}
+                        >
+                            <span className="hidden sm:inline">Next</span>
+                            <HiChevronRight className="w-5 h-5" />
+                        </button>
+                    </div>
+                )}
             </div>
         </div>
     );

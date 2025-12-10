@@ -1,0 +1,250 @@
+# Residence Pro - Project Summary & Color Palette
+
+**Version:** 0.0.0 (Private)  
+**Build Tool:** Vite  
+**Framework:** React 18.3.1
+
+---
+
+## 🎨 Color Palette
+
+### 🌙 Dark Theme
+```css
+/* Primary Colors */
+--primary: #3B82F6        /* Blue - Main brand color */
+--primary-hover: #2563EB  /* Blue darker - Hover states */
+--secondary: #8B5CF6      /* Purple - Accent color */
+--secondary-hover: #7C3AED
+
+/* Background Colors */
+--bg-primary: #0F172A     /* Slate 900 - Main background */
+--bg-secondary: #1E293B   /* Slate 800 - Card backgrounds */
+--bg-tertiary: #334155    /* Slate 700 - Elevated surfaces */
+
+/* Text Colors */
+--text-primary: #F8FAFC   /* Slate 50 - Main text */
+--text-secondary: #CBD5E1 /* Slate 300 - Secondary text */
+--text-muted: #64748B     /* Slate 500 - Muted text */
+
+/* Border & Divider */
+--border: #334155         /* Slate 700 */
+--divider: #1E293B        /* Slate 800 */
+
+/* Status Colors */
+--success: #10B981        /* Emerald 500 */
+--warning: #F59E0B        /* Amber 500 */
+--error: #EF4444          /* Red 500 */
+--info: #06B6D4           /* Cyan 500 */
+```
+
+### ☀️ Light Theme
+```css
+/* Primary Colors */
+--primary: #2563EB        /* Blue 600 - Main brand color */
+--primary-hover: #1D4ED8  /* Blue 700 - Hover states */
+--secondary: #7C3AED      /* Purple 600 - Accent color */
+--secondary-hover: #6D28D9
+
+/* Background Colors */
+--bg-primary: #FFFFFF     /* White - Main background */
+--bg-secondary: #F8FAFC   /* Slate 50 - Card backgrounds */
+--bg-tertiary: #F1F5F9    /* Slate 100 - Elevated surfaces */
+
+/* Text Colors */
+--text-primary: #0F172A   /* Slate 900 - Main text */
+--text-secondary: #475569 /* Slate 600 - Secondary text */
+--text-muted: #94A3B8     /* Slate 400 - Muted text */
+
+/* Border & Divider */
+--border: #E2E8F0         /* Slate 200 */
+--divider: #F1F5F9        /* Slate 100 */
+
+/* Status Colors */
+--success: #059669        /* Emerald 600 */
+--warning: #D97706        /* Amber 600 */
+--error: #DC2626          /* Red 600 */
+--info: #0891B2           /* Cyan 600 */
+```
+
+---
+
+## 🎯 Color Usage Guidelines
+
+### Navigation & Headers
+- **Dark:** Primary (#3B82F6) on Dark Background (#0F172A)
+- **Light:** Primary (#2563EB) on White Background (#FFFFFF)
+
+### Property Cards
+- **Dark:** Card Background (#1E293B) with Slate 700 Border (#334155)
+- **Light:** White Card (#FFFFFF) with Slate 200 Border (#E2E8F0)
+
+### Buttons
+- **Primary CTA:** Blue gradient (Primary → Secondary)
+- **Secondary:** Outlined with border color
+- **Danger:** Error color for delete/cancel actions
+
+### Interactive Elements
+- **Hover States:** Lighten/darken by one shade
+- **Active States:** Darken by two shades
+- **Focus Rings:** Primary color at 50% opacity
+
+### Stripe Payment Integration
+- **Success State:** Success color (#10B981 / #059669)
+- **Processing:** Info color (#06B6D4 / #0891B2)
+- **Error:** Error color (#EF4444 / #DC2626)
+
+### Map Markers (Leaflet)
+- **Available Properties:** Success color
+- **Pending:** Warning color
+- **Sold/Unavailable:** Muted text color
+- **Selected:** Primary color with pulse animation
+
+---
+
+## 📋 Project Overview
+
+Residence Pro is a modern property management application built with React and Vite, featuring payment processing, real-time backend services, and interactive mapping capabilities.
+
+---
+
+## 🚀 Core Technologies
+
+### Frontend Framework
+- **React** 18.3.1 - UI library
+- **React DOM** 18.2.0 - DOM rendering
+- **Vite** 5.2.0 - Build tool & dev server
+
+### Styling & UI
+- **Tailwind CSS** 3.4.3 - Utility-first CSS
+- **DaisyUI** 4.10.1 - Component library
+- **Autoprefixer** 10.4.19 - CSS compatibility
+
+### Routing & Navigation
+- **React Router DOM** 6.22.3 - Client-side routing
+
+---
+
+## 💳 Payment Integration
+- **Stripe React** 2.7.1
+- **Stripe.js** 3.5.0
+
+---
+
+## 🔥 Backend & Data
+- **Firebase** 10.12.2 - Authentication, Database, Hosting
+- **Axios** 1.6.8 - HTTP requests
+- **LocalForage** 1.10.0 - Offline storage
+
+---
+
+## 🗺️ Maps & Location
+- **React Leaflet** 4.2.1 - Interactive maps
+
+---
+
+## 📦 Key Features & Libraries
+
+### State Management & Data Fetching
+- **TanStack React Query** 5.40.0 - Server state management
+
+### Forms & Validation
+- **React Hook Form** 7.51.5 - Form handling
+
+### UI Components
+- **React Icons** 5.2.1 - Icon library
+- **React Responsive Carousel** 3.2.23 - Image carousels
+- **React Paginate** 8.2.0 - Pagination
+
+### Notifications & Alerts
+- **React Toastify** 10.0.5 - Toast notifications
+- **SweetAlert2** 11.11.0 - Beautiful alerts
+- **SweetAlert2 Dark Theme** 5.0.16
+
+### Security
+- **React Simple Captcha** 9.3.1 - CAPTCHA protection
+
+### Utilities
+- **Match Sorter** 6.3.4 - Fuzzy search/filtering
+- **Sort By** 1.2.0 - Array sorting
+
+---
+
+## 🛠️ Development Tools
+
+### Code Quality
+- **ESLint** 8.57.0 - Linting
+- **ESLint React Plugins** - React-specific rules
+
+### Build Configuration
+- **Vite Plugin React** 4.2.1
+- **PostCSS** 8.4.38
+- **Rollup** 4.15.0 (overridden)
+
+---
+
+## 📜 Available Scripts
+
+```bash
+npm run dev      # Start development server
+npm run build    # Build for production
+npm run lint     # Run ESLint
+npm run preview  # Preview production build
+```
+
+---
+
+## 🎯 Project Highlights
+
+✅ Modern React 18 with hooks  
+✅ Fast development with Vite  
+✅ Stripe payment integration  
+✅ Firebase backend services  
+✅ Interactive maps with Leaflet  
+✅ Responsive design with Tailwind  
+✅ Form handling & validation  
+✅ Toast notifications & alerts  
+✅ SEO-ready with React Helmet  
+✅ Offline-first capabilities  
+✅ Type-safe props with PropTypes
+
+---
+
+## 📊 Dependency Count
+
+- **Total Dependencies:** 20
+- **Dev Dependencies:** 12
+- **Total Packages:** 32
+
+---
+
+## 💡 Implementation Tips
+
+### Tailwind Configuration
+Add custom colors to `tailwind.config.js`:
+
+```javascript
+module.exports = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          DEFAULT: '#3B82F6',
+          dark: '#2563EB',
+        },
+        secondary: {
+          DEFAULT: '#8B5CF6',
+          dark: '#7C3AED',
+        },
+      },
+    },
+  },
+}
+```
+
+### Dark Mode Toggle
+Use React state with localStorage persistence for theme switching.
+
+---
+
+**Built with ❤️ using modern web technologies**

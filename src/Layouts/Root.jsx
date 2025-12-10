@@ -7,7 +7,7 @@ const Root = () => {
     const ifLoginPage = location.pathname.includes('sign-in')
     const ifSignUpPage = location.pathname.includes('sign-up')
     return (
-        <div>
+        <div className='flex flex-col'>
             {(ifLoginPage || ifSignUpPage) || <NavBar></NavBar>}
             <Outlet></Outlet>
             {(ifLoginPage || ifSignUpPage) || <Footer></Footer>}

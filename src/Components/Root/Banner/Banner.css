@@ -1,0 +1,48 @@
+.banner-carousel .carousel .control-dots {
+    bottom: 100px;
+}
+
+.banner-carousel .carousel .control-dots .dot {
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: none;
+    width: 12px;
+    height: 12px;
+}
+
+.banner-carousel .carousel .control-dots .dot.selected {
+    background: white;
+    width: 32px;
+    border-radius: 6px;
+}
+
+.banner-carousel .carousel.carousel-slider .control-arrow {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.8;
+}
+
+.banner-carousel .carousel.carousel-slider .control-arrow:hover {
+    background: rgba(59, 130, 246, 0.8);
+    opacity: 1;
+}
+
+.banner-carousel .carousel.carousel-slider .control-arrow:before {
+    border-width: 0 3px 3px 0;
+    padding: 6px;
+}
+
+@media (max-width: 768px) {
+    .banner-carousel .carousel .control-dots {
+        bottom: 20px;
+    }
+    
+    .banner-carousel .carousel.carousel-slider .control-arrow {
+        width: 40px;
+        height: 40px;
+    }
+}
