@@ -9,6 +9,7 @@ import { RiCoupon2Fill } from "react-icons/ri";
 import { GrAnnounce } from "react-icons/gr";
 import { BsFillPeopleFill } from "react-icons/bs";
 import { HiMenu, HiX, HiChevronRight } from "react-icons/hi";
+import ThemeToggler from '../Shared/ThemeToggler/ThemeToggler'
 
 const Dashboard = () => {
     const [isAdmin, isAdminLoading] = useAdmin();
@@ -75,6 +76,11 @@ const Dashboard = () => {
                 )}
             </button>
 
+            {/* Theme Toggle Button - Fixed on Mobile */}
+            <div className="fixed top-4 right-4 z-50 lg:hidden">
+                <ThemeToggler />
+            </div>
+
             {/* Overlay for mobile */}
             {isSidebarOpen && (
                 <div
@@ -92,15 +98,21 @@ const Dashboard = () => {
                 <div className="flex flex-col h-full">
                     {/* Sidebar Header */}
                     <div className="p-6 border-b border-[#E2E8F0] dark:border-[#334155]">
-                        <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 bg-gradient-to-br from-[#3B82F6] to-[#8B5CF6] rounded-xl flex items-center justify-center shadow-lg">
-                                <MdDashboard className="w-6 h-6 text-white" />
+                        <div className="flex items-center justify-between gap-3">
+                            <div className="flex items-center gap-3">
+                                <div className="w-10 h-10 bg-gradient-to-br from-[#3B82F6] to-[#8B5CF6] rounded-xl flex items-center justify-center shadow-lg">
+                                    <MdDashboard className="w-6 h-6 text-white" />
+                                </div>
+                                <div>
+                                    <h2 className="text-lg font-bold text-[#0F172A] dark:text-[#F8FAFC]">Dashboard</h2>
+                                    <p className="text-xs text-[#64748B] dark:text-[#64748B]">
+                                        {isAdmin ? "Admin Panel" : isMember ? "Member Panel" : "User Panel"}
+                                    </p>
+                                </div>
                             </div>
-                            <div>
-                                <h2 className="text-lg font-bold text-[#0F172A] dark:text-[#F8FAFC]">Dashboard</h2>
-                                <p className="text-xs text-[#64748B] dark:text-[#64748B]">
-                                    {isAdmin ? "Admin Panel" : isMember ? "Member Panel" : "User Panel"}
-                                </p>
+                            {/* Theme Toggle for Desktop */}
+                            <div className="hidden lg:block">
+                                <ThemeToggler />
                             </div>
                         </div>
                     </div>

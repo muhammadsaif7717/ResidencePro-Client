@@ -17,7 +17,7 @@
     "axios": "^1.6.8",
     "embla-carousel-autoplay": "^8.6.0",
     "embla-carousel-react": "^8.6.0",
-    "firebase": "^10.12.2",
+    "firebase": "^10.14.1",
     "icons": "^1.0.0",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.4",
